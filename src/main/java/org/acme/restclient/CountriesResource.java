@@ -2,6 +2,7 @@ package org.acme.restclient;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import javax.cache.annotation.CacheResult;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,6 +22,7 @@ public class CountriesResource {
     @GET
     @Path("/name/{name}")
     @Produces(MediaType.APPLICATION_JSON)
+    @CacheResult
     public Set<Country> name(@PathParam("name") String name) {
         return countriesService.getByName(name);
     }
